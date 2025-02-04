@@ -1,0 +1,39 @@
+#define LED_PIN 13
+#define BUTTON_PIN 2
+#define LED_PIN_2 9
+bool led = false;
+void led_on()
+{
+led =! led;
+}
+void blink_led()
+{
+  digitalWrite(LED_PIN,HIGH);
+  delay(1000);
+  digitalWrite(LED_PIN, LOW);
+  delay(1000);
+}
+
+void setup()
+{
+pinMode(LED_PIN,OUTPUT);
+pinMode(LED_PIN_2,OUTPUT);
+pinMode(BUTTON_PIN,INPUT);
+attachInterrupt(digitalPinToInterrupt(BUTTON_PIN),led_on,RISING);
+}
+
+void loop()
+{
+  blink_led();
+
+if(led)
+{
+    digitalWrite(LED_PIN,HIGH);
+
+}
+else
+{
+    digitalWrite(LED_PIN,LOW);
+
+}
+}
